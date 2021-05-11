@@ -7,8 +7,8 @@ Enter individual attacks and the calculator will calculate damage sent according
 
 As per the chart, your first combo or B2B is your 0th. Thus a non combo/B2B is represented with a -1. Be cognizant of that when setting base values.
 
-Damage may be inaccurate past 20combo. Check the code for the specifics on my jank implementation.
-
-Disclaimer: the additive math used for B2Bs here actually doesn't seem to perfectly line up with the chart from osk for some values. I'm not confident which is actually correct. Pls let me (swng#1965) know if you have any insights :3 
-Disclaimer 2: I also barely know what I'm doing.
 Combo chains and B2B chains are assumed for consecutive inputted attacks. To break combo chain, enter a None attack; to break B2B, enter a non-Quad/T-Spin/None attack (a single/double/triple).
+
+Disclaimer: I barely know what I'm doing.  
+Disclaimer 2: Damage may be inaccurate past 20combo. Check the code for the specifics on my jank implementation.  
+Disclaimer 3: The additive math used for high B2Bs is correct at low combo, but at high B2B high combo the numbers do not line up with osk chart or with in-game testing. Pls let me (swng#1965) know if you have any insights :3
