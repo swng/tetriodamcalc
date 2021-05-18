@@ -1,4 +1,67 @@
-var num_attacks = 11;
+var num_rendered = 0;
+var num_attacks = 9;
+renderFields();
+
+function addField() {
+    num_attacks++;
+    renderFields();
+}
+function removeField() {
+    num_attacks--;
+    if (num_attacks < 1) num_attacks = 1;
+    renderFields();
+}
+
+function renderFields() {
+    var container = document.getElementById("container");
+    while (num_rendered > num_attacks) {
+        for (i = 0; i < 7; i++)  container.removeChild(container.lastChild);
+        num_rendered--;
+    }
+    for (i = num_rendered; i < num_attacks; i++) {
+        var attackType = document.createElement("select");
+        attackType.id = "attack type " + i;
+        var attackTypeLabel = document.createElement("label");
+        attackTypeLabel.htmlFor = attackType.id;
+        attackTypeLabel.innerText = "Attack type: ";
+        var PC = document.createElement("input");
+        PC.id = "PC " + i;
+        PC.type = "checkbox";
+        var PCLabel = document.createElement("label");
+        PCLabel.htmlFor = PC.id;
+        PCLabel.innerText = " PC? ";
+
+        attackType.append(new Option("None", -1));
+        attackType.append(new Option("Single", 0));
+        attackType.append(new Option("Double", 1));
+        attackType.append(new Option("Triple", 2));
+        attackType.append(new Option("Quad", 3));
+        attackType.append(new Option("T-Spin Mini Single", 4));
+        attackType.append(new Option("T-Spin Single", 5));
+        attackType.append(new Option("T-Spin Mini Double", 6));
+        attackType.append(new Option("T-Spin Double", 7));
+        attackType.append(new Option("T-Spin Triple", 8));
+
+        var damage_0 = document.createElement("span");
+        damage_0.innerText = " Damage: ";
+        var damage_1 = document.createElement("span");
+        damage_1.id = "damage " + i;
+        damage_1.innerText = 0;
+            
+        container.appendChild(attackTypeLabel);
+        container.appendChild(attackType);
+        container.appendChild(PCLabel);
+        container.appendChild(PC);
+        container.appendChild(damage_0);
+        container.appendChild(damage_1);
+
+
+        container.appendChild(document.createElement("p"));
+        num_rendered++;
+            
+    }
+}
+
 
 function B2B_level(B2B) {
 	// source: osk: https://discord.com/channels/673303546107658242/674421736162197515/713419086486437960
@@ -13,12 +76,14 @@ function B2B_level(B2B) {
 	return 8; // if there's a B2B level past lv 8 I don't know where it starts
 }
 
+// [0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4]
+
 // lol hardcoded attack table. Hopefully I didn't typo when typing them out...
 // osk table covers up to 20c and up to B2B level 4
 var AttackTable = [
 	// straight taken from osk's table: https://cdn.discordapp.com/attachments/674421736162197515/716081165886423110/2020-05-30_02-07-18.png
 	[
-		[0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3], // Single
+        [0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3], // Single // hits 4 at... 43
 		[1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6], // Double. Increments every 4 combos.
 		[2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12], // Triple. Increments every 2 combos.
 		[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], // Quad. Increments every combo.
@@ -82,7 +147,7 @@ function attackTable(type, combo, B2B) {
 	if (type == -1) return 0;
 	if (type < 3) B2B = 0; // these two sanity checks shouldn't be necessary and are handled at the upper level but... redundancy?
 
-	var B2B_Level = B2B_level(B2B);
+	let B2B_Level = B2B_level(B2B);
 
 	if (B2B_Level == 0) {
 		if (combo < 21) return AttackTable[B2B_Level][type][combo]; // default behaviour: under 21c we can directly reference the table
@@ -211,55 +276,55 @@ function attackTable(type, combo, B2B) {
                 console.log("rip idk");
                 return;
             }
-            */
+*/
 
 function calculate() {
-	var type_0 = document.getElementById('attack type 0').value;
-	var PC_0 = document.getElementById('PC 0').checked;
+	let type_0 = document.getElementById('attack type 0').value;
+	let PC_0 = document.getElementById('PC 0').checked;
 
-	var combo_0 = document.getElementById('base combo').valueAsNumber;
+	let combo_0 = document.getElementById('base combo').valueAsNumber;
 	if (isNaN(combo_0)) combo_0 = -1;
 	if (type_0 != -1) combo_0++;
 
-	var B2B_0 = document.getElementById('base B2B').valueAsNumber;
+	let B2B_0 = document.getElementById('base B2B').valueAsNumber;
 	if (isNaN(B2B_0)) B2B_0 = -1;
 	if (type_0 >= 3) B2B_0++;
 
-	if (type_0 == -1) var damage_0 = 0;
-	else var damage_0 = attackTable(type_0, combo_0, B2B_0);
+	let damage_0 = 0;
+	if (type_0 != -1) damage_0 = attackTable(type_0, combo_0, B2B_0);
 	if (PC_0) damage_0 += 10; // technically PC damage comes separately and that should be indicated but whatever
 
 	document.getElementById('damage 0').innerHTML = damage_0;
 
-	types = [type_0];
-	combos = [combo_0];
-	B2Bs = [B2B_0];
-	damages = [damage_0];
+	let types = [type_0];
+	let combos = [combo_0];
+	let B2Bs = [B2B_0];
+	let damages = [damage_0];
 
-	for (i = 1; i < num_attacks; i++) {
-		var type = document.getElementById('attack type ' + i.toString()).value;
-		var PC = document.getElementById('PC ' + i.toString()).checked;
+    for (i = 1; i < num_attacks; i++) {
+		let type = document.getElementById('attack type ' + i.toString()).value;
+		let PC = document.getElementById('PC ' + i.toString()).checked;
 
 		types.push(type);
 
-		var combo = combos[i - 1] + 1;
+		let combo = combos[i - 1] + 1;
 		if (type == -1) combo = -1;
 		combos.push(combo);
 
-		var B2B = B2Bs[i - 1];
+		let B2B = B2Bs[i - 1];
 		if (type >= 0 && type <= 2) B2B = -1;
 		if (type >= 3) B2B++;
 		B2Bs.push(B2B);
 
-		if (type == -1) var damage = 0;
-		else var damage = attackTable(type, combo, B2B);
+		let damage = 0;
+		if (type != -1) damage = attackTable(type, combo, B2B);
 		if (PC) damage += 10;
 
 		damages.push(damage);
 		document.getElementById('damage ' + i.toString()).innerHTML = damage;
 	}
 
-	var total = damages.reduce((a, b) => a + b, 0); // sum
+	let total = damages.reduce((a, b) => a + b, 0); // sum
 	console.log(damages, total); // debugging purposes. Can log the other arrays too for more info if so desired.
 	document.getElementById('total damage').innerHTML = damages.reduce((a, b) => a + b, 0);
 }
