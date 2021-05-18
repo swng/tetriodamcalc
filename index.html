@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<h1>tetr.io damage calculator</h1>
-
+        
 		<p>
 			Enter individual attacks and the calculator will calculate damage sent according to the
 			<a
@@ -34,7 +34,7 @@
 			attack; to break B2B, enter a non-Quad/T-Spin/None attack (a single/double/triple).
 		</p>
 		<p>
-			Disclaimer: I barely know what I'm doing. For more on the accuracy of the calculator's values, please see
+			Disclaimer: I barely know what I'm doing. For more info on the accuracy of the calculator's values, please consult
 			the <a href="https://github.com/swng/tetriodamcalc/blob/main/README.md">README</a>. Pls let me (swng#1965)
 			know if you have any insights :3
 		</p>
@@ -47,243 +47,17 @@
 
 		<p></p>
 
-		<!-- Hardcoding each line, thonk... -->
-		<!-- I would prefer to have number of lines controlled by a user-controlled variable, but don't know how to do that... -->
+        <div id="container"></div>
 
-		<label for="attack type 0">Attack type:</label>
-		<select id="attack type 0">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 0">PC?</label>
-		<input type="checkbox" id="PC 0" />
+        <a>Add Fields</a>
+        <button onclick="removeField()">-</button>
+        <button onclick="addField()">+</button>
 
-		<span>Damage: </span>
-		<span id="damage 0">0</span>
-
-		<p></p>
-
-		<label for="attack type 1">Attack type:</label>
-		<select id="attack type 1">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 1">PC?</label>
-		<input type="checkbox" id="PC 1" />
-
-		<span>Damage: </span>
-		<span id="damage 1">0</span>
-
-		<p></p>
-
-		<label for="attack type 2">Attack type:</label>
-		<select id="attack type 2">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 2">PC?</label>
-		<input type="checkbox" id="PC 2" />
-
-		<span>Damage: </span>
-		<span id="damage 2">0</span>
-
-		<p></p>
-
-		<label for="attack type 3">Attack type:</label>
-		<select id="attack type 3">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 3">PC?</label>
-		<input type="checkbox" id="PC 3" />
-
-		<span>Damage: </span>
-		<span id="damage 3">0</span>
-
-		<p></p>
-
-		<label for="attack type 4">Attack type:</label>
-		<select id="attack type 4">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 4">PC?</label>
-		<input type="checkbox" id="PC 4" />
-
-		<span>Damage: </span>
-		<span id="damage 4">0</span>
-
-		<p></p>
-
-		<label for="attack type 5">Attack type:</label>
-		<select id="attack type 5">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 5">PC?</label>
-		<input type="checkbox" id="PC 5" />
-
-		<span>Damage: </span>
-		<span id="damage 5">0</span>
-
-		<p></p>
-
-		<label for="attack type 6">Attack type:</label>
-		<select id="attack type 6">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 6">PC?</label>
-		<input type="checkbox" id="PC 6" />
-
-		<span>Damage: </span>
-		<span id="damage 6">0</span>
-
-		<p></p>
-
-		<label for="attack type 7">Attack type:</label>
-		<select id="attack type 7">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 7">PC?</label>
-		<input type="checkbox" id="PC 7" />
-
-		<span>Damage: </span>
-		<span id="damage 7">0</span>
-
-		<p></p>
-
-		<label for="attack type 8">Attack type:</label>
-		<select id="attack type 8">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 8">PC?</label>
-		<input type="checkbox" id="PC 8" />
-
-		<span>Damage: </span>
-		<span id="damage 8">0</span>
-
-		<p></p>
-
-		<label for="attack type 9">Attack type:</label>
-		<select id="attack type 9">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 9">PC?</label>
-		<input type="checkbox" id="PC 9" />
-
-		<span>Damage: </span>
-		<span id="damage 9">0</span>
-
-		<p></p>
-
-		<label for="attack type 10">Attack type:</label>
-		<select id="attack type 10">
-			<option value="-1">None</option>
-			<option value="0">Single</option>
-			<option value="1">Double</option>
-			<option value="2">Triple</option>
-			<option value="3">Quad</option>
-			<option value="4">T-Spin Mini Single</option>
-			<option value="5">T-Spin Single</option>
-			<option value="6">T-Spin Mini Double</option>
-			<option value="7">T-Spin Double</option>
-			<option value="8">T-Spin Triple</option>
-		</select>
-		<label for="PC 10">PC?</label>
-		<input type="checkbox" id="PC 10" />
-
-		<span>Damage: </span>
-		<span id="damage 10">0</span>
-
-		<p></p>
+        <p></p>
 
 		<span>Total Damage:</span>
 		<span id="total damage">0</span>
 
-		<script src="tetriodamcalc.js"></script>
+		<script defer src="./tetriodamcalc.js"></script>
 	</body>
 </html>
