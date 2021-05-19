@@ -18,6 +18,6 @@ For B2B level > 4, there are no mapped chart values. Calculator defaults to addi
 
 Final note - since official table values are known to be slightly off from in-game damage in some places, the calculator adhering to the official table will be off in the same way.
 
-AttackTable2 is currently the exact same as osk chart but I intend to slowly it (deviating from the official osk table) through testing. This will fix individual values but probably break linearity so extrapolation to high combos will likely fail.
+AttackTable2 is currently the exact same as osk chart but I intend to slowly test in-game and correct values (deviating from the official osk table). This will fix individual values but probably break linearity so extrapolation to high combos will likely fail.
 
 Pls let me (swng#1965) know if you have any insights :3
