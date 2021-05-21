@@ -62,6 +62,12 @@ function renderFields() {
     }
 }
 
+function showAttackTable() {
+    console.log(AttackTable);
+    alert("just use console to view or edit AttackTable\nbtw it doesn't set until clicking calculate\n " + JSON.stringify(AttackTable));
+}
+
+
 
 function B2B_level(B2B) {
 	// source: osk: https://discord.com/channels/673303546107658242/674421736162197515/713419086486437960
@@ -227,6 +233,8 @@ var AttackTable2 = [
 	], // B2B 4
 ];
 
+var custom = [new Array(9).fill(new Array(20).fill(0))];
+
 var AttackTable = AttackTable1;
 
 function attackTable(type, combo, B2B) {
@@ -239,7 +247,7 @@ function attackTable(type, combo, B2B) {
 
     let B2B_Level = B2B_level(B2B);
 
-    if (B2B_Level <= 4) {
+    if (B2B_Level < AttackTable1.length) {
         if (combo < 21) return AttackTable[B2B_Level][type][combo]; // default behaviour: under 21c we can directly reference the table
         
         if (B2B_Level == 0 && (type == 0 || type == 4)) { // these two are nonlinear but it is known that it hits 4 damage at 43 combo
@@ -290,6 +298,7 @@ function calculate() {
     table_used = document.getElementById('attack table').value;
     if (table_used == 1) AttackTable = AttackTable1;
     if (table_used == 2) AttackTable = AttackTable2;
+    if (table_used == 3) AttackTable = custom;
 
 
 	let type_0 = document.getElementById('attack type 0').value;
