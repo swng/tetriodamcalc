@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <link rel="icon" href="https://branding.osk.sh/tetrio-color.png">
+	<link rel="icon" href="https://branding.osk.sh/tetrio-color.png" />
 
 	<head>
 		<meta charset="UTF-8" />
@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<h1>tetr.io damage calculator</h1>
-        
+
 		<p>
 			Enter individual attacks and the calculator will calculate damage sent according to the
 			<a
@@ -35,24 +35,19 @@
 			Combo chains and B2B chains are assumed for consecutive inputted attacks. To break combo chain, enter a None
 			attack; to break B2B, enter a non-Quad/T-Spin/None attack (a single/double/triple).
 		</p>
-        <p>
-            Disclaimer: This is a fanmade site.
-        </p>
+		<p>Disclaimer: This is a fanmade site.</p>
 		<p>
-			Disclaimer 2: I barely know what I'm doing. For more info on the accuracy of the calculator's values, please consult
-			the <a href="https://github.com/swng/tetriodamcalc/blob/main/README.md">README</a>. Pls let me (swng#1965)
-			know if you have any insights :3
+			Disclaimer 2: I barely know what I'm doing. For more info on the accuracy of the calculator's values, please
+			consult the <a href="https://github.com/swng/tetriodamcalc/blob/main/README.md">README</a>. Pls let me
+			(swng#1965) know if you have any insights :3
 		</p>
 
-        <label for="attack table">Attack Table:</label>
+		<label for="attack table">Attack Table:</label>
 		<select id="attack table" value="1">
 			<option value="1">AttackTable1</option>
 			<option value="2">AttackTable2</option>
-            <option value="3">custom (set in console)</option>
 		</select>
-        <button onclick="showAttackTable()">Show</button>
-        <p></p>
-
+		<p></p>
 
 		<button onclick="calculate()">Calculate</button>
 		<p></p>
@@ -62,13 +57,13 @@
 
 		<p></p>
 
-        <div id="container"></div>
+		<div id="container"></div>
 
-        <a>Add Fields</a>
-        <button onclick="removeField()">-</button>
-        <button onclick="addField()">+</button>
+		<a>Add Fields</a>
+		<button onclick="removeField()">-</button>
+		<button onclick="addField()">+</button>
 
-        <p></p>
+		<p></p>
 
 		<span>Total Damage:</span>
 		<span id="total damage">0</span>
