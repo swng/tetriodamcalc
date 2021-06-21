@@ -11,13 +11,8 @@ Combo chains and B2B chains are assumed for consecutive inputted attacks. To bre
 
 Disclaimer: I barely know what I'm doing. On the accuracy of the calculator's values:  
 osk chart is AttackTable1.  
-Calculator defaults to table values when B2B level <=4 and combo <=20 (when the chart has values).  
-When B2B level <= 4 and combo > 20, calculator extrapolates a linear pattern from chart.  
-Single and TSSM at B2B 0 don't appear to be linear so this is manually handled.
-For B2B level > 4, there are no mapped chart values. Calculator defaults to additive B2B level math - that is, [B2B lv 0 damage] + [B2B level]. Note that for high combos this formula is probably lower than the true in-game damage.
+Calculator defaults to table values when B2B level <=4 and combo <=20 (when the chart has values). Past the offiial table's bounds, the calculator does a little extrapolation logic.  
+AttackTable2 is actually not a table at all but actually the damcalc function.  
+The two approaches *will* contradict at some high B2B and combo levels. I advise going with the AttackTable2 function but you can use the official AttackTable1 osk chart, and the site defaults to AttackTable1.
 
-Final note - since official table values are known to be slightly off from in-game damage in some places, the calculator adhering to the official table will be off in the same way.
-
-AttackTable2 is currently the exact same as osk chart but I intend to slowly test in-game and correct values (deviating from the official osk table). This will fix individual values but probably break linearity so extrapolation to high combos will likely fail.
-
-Pls let me (swng#1965) know if you have any insights :3
+Pls let me (swng#1965) know if something is going wrong.
