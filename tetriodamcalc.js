@@ -23,7 +23,7 @@ function renderFields() {
 		attackType.id = 'attack type ' + i;
 		var attackTypeLabel = document.createElement('label');
 		attackTypeLabel.htmlFor = attackType.id;
-		attackTypeLabel.innerText = 'Attack type: ';
+		attackTypeLabel.innerText = `(${i}) Attack type: `;
 		var PC = document.createElement('input');
 		PC.id = 'PC ' + i;
 		PC.type = 'checkbox';
