@@ -32,15 +32,15 @@ function renderFields() {
 		PCLabel.innerText = ' PC? ';
 
 		attackType.append(new Option('None', -1));
-		attackType.append(new Option('Single', 0));
-		attackType.append(new Option('Double', 1));
-		attackType.append(new Option('Triple', 2));
-		attackType.append(new Option('Quad', 3));
-		attackType.append(new Option('T-Spin Mini Single', 4));
-		attackType.append(new Option('T-Spin Single', 5));
-		attackType.append(new Option('T-Spin Mini Double', 6));
-		attackType.append(new Option('T-Spin Double', 7));
-		attackType.append(new Option('T-Spin Triple', 8));
+		attackType.append(new Option('0) Single', 0));
+		attackType.append(new Option('1) Double', 1));
+		attackType.append(new Option('2) Triple', 2));
+		attackType.append(new Option('3) Quad', 3));
+		attackType.append(new Option('4) T-Spin Mini Single', 4));
+		attackType.append(new Option('5) T-Spin Single', 5));
+		attackType.append(new Option('6) T-Spin Mini Double', 6));
+		attackType.append(new Option('7) T-Spin Double', 7));
+		attackType.append(new Option('8) T-Spin Triple', 8));
 
 		var damage_0 = document.createElement('span');
 		damage_0.innerText = ' Damage: ';
