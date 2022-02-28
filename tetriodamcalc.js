@@ -431,6 +431,30 @@ function linear(list) {
 	return [];
 }
 
+function link() { // generate encoded link
+    result = window.location.origin + window.location.pathname + "?"
+    let combo_0 = document.getElementById('base combo').valueAsNumber;
+    if (isNaN(combo_0)) combo_0 = -1;
+    result += combo_0.toString() + "&";
+    let B2B_0 = document.getElementById('base B2B').valueAsNumber;
+    if (isNaN(B2B_0)) B2B_0 = -1;
+    result += B2B_0.toString() + "&";
+
+    for (i = 0; i < num_attacks; i++) {
+        let a = parseInt(document.getElementById('attack type ' + i.toString()).value)+1; // between 0 and 9
+        let b = document.getElementById('PC ' + i.toString()).checked;
+
+        a *= 2;
+        if (b) a++;
+        // between 0 and 19 now
+        
+        result += "abcdefghijklmnopqrstuvwxyz"[a]; // alphabet encoding, good enough. Certainly there's more efficient ways to encode in less characters but this is good enough
+    
+    }
+    console.log(result);
+    navigator.clipboard.writeText(result);
+}
+
 function calculate() {
 	let type_0 = document.getElementById('attack type 0').value;
 	let PC_0 = document.getElementById('PC 0').checked;
@@ -486,4 +510,32 @@ function calculate() {
 	let total = damages.reduce((a, b) => a + b, 0); // sum
 	console.log(damages, total); // debugging purposes. Can log the other arrays too for more info if so desired.
 	document.getElementById('total damage').innerHTML = damages.reduce((a, b) => a + b, 0);
+}
+
+queries = window.location.search.slice(1).split("&"); // load encoded link
+if (queries.length == 3) {
+    combo_0 = parseInt(queries[0]);
+    if (isNaN(combo_0)) combo_0 = -1;
+    document.getElementById('base combo').value = combo_0;
+    B2B_0 = parseInt(queries[1]);
+    if (isNaN(B2B_0)) B2B_0 = -1;
+    document.getElementById('base B2B').value = B2B_0;
+
+    num_attacks = Math.min(Math.max(1, queries[2].length), 999);
+    renderFields();
+    
+    for (i = 0; i < num_attacks; i++) {
+        encoding = queries[2].charCodeAt(i) - 97;
+        console.log(encoding);
+        if (encoding % 2 == 1) {
+            document.getElementById('PC ' + i.toString()).checked = true;
+            encoding--;
+        }
+        encoding /= 2;
+        encoding--;
+        document.getElementById('attack type ' + i.toString()).value = encoding.toString();
+
+    }
+
+    calculate();
 }
