@@ -433,6 +433,9 @@ function linear(list) {
 
 function link() { // generate encoded link
     result = window.location.origin + window.location.pathname + "?"
+
+    result += document.getElementById('attack table').value + "&";
+
     let combo_0 = document.getElementById('base combo').valueAsNumber;
     if (isNaN(combo_0)) combo_0 = -1;
     result += combo_0.toString() + "&";
@@ -513,20 +516,20 @@ function calculate() {
 }
 
 queries = window.location.search.slice(1).split("&"); // load encoded link
-if (queries.length == 3) {
-    combo_0 = parseInt(queries[0]);
+if (queries.length == 4) {
+    if (queries[0] == 1 || queries[0] == 2) document.getElementById('attack table').value = queries[0];
+    combo_0 = parseInt(queries[1]);
     if (isNaN(combo_0)) combo_0 = -1;
     document.getElementById('base combo').value = combo_0;
-    B2B_0 = parseInt(queries[1]);
+    B2B_0 = parseInt(queries[2]);
     if (isNaN(B2B_0)) B2B_0 = -1;
     document.getElementById('base B2B').value = B2B_0;
 
-    num_attacks = Math.min(Math.max(1, queries[2].length), 999);
+    num_attacks = Math.min(Math.max(1, queries[3].length), 999);
     renderFields();
     
     for (i = 0; i < num_attacks; i++) {
-        encoding = queries[2].charCodeAt(i) - 97;
-        console.log(encoding);
+        encoding = queries[3].charCodeAt(i) - 97;
         if (encoding % 2 == 1) {
             document.getElementById('PC ' + i.toString()).checked = true;
             encoding--;
