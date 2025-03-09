@@ -1,4 +1,4 @@
-import { damcalc } from 'damcalc.js';
+import { damcalc } from './damcalc.js';
 
 const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // used for encoding
