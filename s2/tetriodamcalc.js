@@ -153,7 +153,7 @@ window.gameState = {
         b2bcharge_base: 3,
         allclear_garbage: 5,
         allclear_b2b: 1,
-        allclear_b2b_sends: !1,
+        allclear_b2b_sends: !0,
         allclear_b2b_dupes: !1,
         allclear_charges: !1,
         b2bextras: !1,
@@ -342,7 +342,7 @@ function calculate() {
 
 		damages.push(damage);
 
-        console.log("le b2b", window.gameState.stats.btb);
+        console.log("b2b chain", window.gameState.stats.btb);
 	}
 
 	let total = damages.reduce((a, b) => a + b, 0); // sum
@@ -371,7 +371,6 @@ if (queries.length == 3) {
     
     for (let i = 0; i < num_attacks; i++) {
         let encoding = alphabet.indexOf(queries[2][i]);
-        console.log(encoding);
         if (encoding % 2 == 1) {
             document.getElementById('gc ' + i.toString()).checked = true;
             encoding--;

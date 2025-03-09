@@ -213,8 +213,7 @@ export function damcalc(linesCleared, isAllClear, isGarbageClear, isSpin, isMini
     }
     
     // Check if all clear bonus should affect garbage
-    const shouldApplyAllClearToGarbage = gameState.setoptions.allclear_b2b_sends || 
-                                        !(gameState.setoptions.allclear_b2b === backToBackBonus && isAllClear);
+    const shouldApplyAllClearToGarbage = gameState.setoptions.allclear_b2b_sends || !(gameState.setoptions.allclear_b2b === backToBackBonus && isAllClear);
 
     
     // console.log(garbageValue);
@@ -237,7 +236,6 @@ export function damcalc(linesCleared, isAllClear, isGarbageClear, isSpin, isMini
                     (1 + (Math.log1p((gameState.stats.btb - 1) * constants.garbage.BACKTOBACK_BONUS_LOG) % 1)) / 3
                 )
             );
-            
             // Apply b2b bonus to garbage
             if (shouldApplyAllClearToGarbage) {
                 garbageValue += b2bChainBonus;
@@ -322,7 +320,7 @@ export function damcalc(linesCleared, isAllClear, isGarbageClear, isSpin, isMini
     // Calculate final garbage value with multiplier
     let finalGarbageValue = AutoRound(garbageValue * gameState.setoptions.garbagemultiplier);
     
-    // Add extra garbage for special clears
+    // Add extra garbage for garbage clears
     if (gameState.setoptions.garbagespecialbonus && isGarbageClear && (linesCleared === 4 || isSpin)) {
         finalGarbageValue++;
     }
