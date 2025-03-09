@@ -16,3 +16,7 @@ AttackTable2 is actually not a table at all but actually the damcalc function.
 The two approaches *will* contradict at some high B2B and combo levels. I advise going with the AttackTable2 function but you can use the official AttackTable1 osk chart, and the site defaults to AttackTable1.
 
 Pls let me (swng#1965) know if something is going wrong.
+
+----
+
+Update - [S2 TL calculator added](https://swng.github.io/tetriodamcalc/s2/).
