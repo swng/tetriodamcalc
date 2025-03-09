@@ -297,7 +297,7 @@ function calculate() {
 
 	let B2B_0 = document.getElementById('base B2B').valueAsNumber;
 	if (isNaN(B2B_0)) B2B_0 = -1;
-	if (type_0 >= 3) B2B_0++;
+	if (type_0 >= 3 || PC_0) B2B_0++;
 
     window.gameState.stats.combo = combo_0;
     window.gameState.stats.btb = B2B_0;
