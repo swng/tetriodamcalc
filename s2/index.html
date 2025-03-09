@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<link rel="icon" href="https://txt.osk.sh/branding/tetrio-color.png" />
+
+<head>
+	<meta charset="UTF-8" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://swng.github.io/tetriodamcalc/" />
+	<meta property="og:title" content="tetr.io damage calculator" />
+	<meta property="og:description" content="Calculate the damage sent by a series of attacks in tetr.io - s2" />
+	<meta property="og:image"
+		content="https://cdn.discordapp.com/attachments/674421736162197515/716081165886423110/2020-05-30_02-07-18.png" />
+	<title>tetr.io damage calculator</title>
+</head>
+
+<body>
+	<h1>tetr.io damage calculator - s2</h1>
+
+	<p>
+		Enter individual attacks and the calculator will calculate damage sent according to the tetr.io attack table.
+	</p>
+	<p>
+		As per the chart, your first combo or B2B is your 0th. Thus a <b><i>non</i></b> combo/B2B is represented
+		with a -1. Be cognizant of that when setting base values.
+	</p>
+	<p>
+		Enter non T allspins (defined by immobile rules) as x-spins. Mini T-Spins are also x-spins.
+	</p>
+	<p>
+		Combo chains and B2B chains are assumed for consecutive inputted attacks. To break combo chain, enter a None
+		attack; to break B2B, enter a non-Quad/Spin/None attack (a single/double/triple).
+	</p>
+	<p>Disclaimer: This is a fanmade site.</p>
+	<p>
+		Disclaimer 2: Site is WIP and may not be accurate to the game's current damage table.
+	</p>
+
+	<button onclick="calculate()">Calculate</button>
+	<button onclick="link()">Get Link</button>
+	<p></p>
+
+	<label>Base combo (default -1)<input type="number" id="base combo" min="-1" /></label>
+	<label>Base B2B (default -1)<input type="number" id="base B2B" min="-1" /></label>
+
+	<p></p>
+
+	<a>Add Fields</a>
+	<button onclick="removeField()">-</button>
+	<button onclick="addField()">+</button>
+
+	<p></p>
+
+	<div id="container"></div>
+
+	<a>Add Fields</a>
+	<button onclick="removeField()">-</button>
+	<button onclick="addField()">+</button>
+	
+	<p></p>
+	<button onclick="calculate()">Calculate</button>
+	<button onclick="link()">Get Link</button>
+	<p></p>
+
+	<span>Total Damage:</span>
+	<span id="total damage">0</span>
+
+	<script type="module" src="./tetriodamcalc.js"></script>
+</body>
+
+</html>
